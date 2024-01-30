@@ -4,11 +4,17 @@ Dark Pattern Recogonizer assists online users to identify the existence of decep
 
 ## Installation
 To install the extension:
+
 1. Clone the repository or donwload the zip file 
+
 2. Unzip the folder in the desired loacation
+
 3. Open chrome://extensions/ in google chrome
+
 4. Enable the develpoer mode on the top left of your screen
+
 5. Click Load unpacked and navigate to the folder that you unzipped
+
 6. Now you chrome extension is reday to be used
 
 ## Usage

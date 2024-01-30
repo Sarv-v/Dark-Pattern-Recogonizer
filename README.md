@@ -1,24 +1,18 @@
-# Dark Pattern Detection Chrome Extension
+# Dark Pattern Recogonizer
 
-The dark pattern detection chrome extension assists online users to identify the existence of deceptive dark patterns on shopping websites.
+Dark Pattern Recogonizer assists online users to identify the existence of deceptive dark patterns on shopping websites.
 
 ## Installation
-To install the extension, please clone the repo and add it to your Chrome browser (make sure that the developer mode is on)
+To install the extension:
+1. Clone the repository or donwload the zip file 
+2. Unzip the folder in the desired loacation
+3. Open chrome://extensions/ in google chrome
+4. Enable the develpoer mode on the top left of your screen
+5. Click Load unpacked and navigate to the folder that you unzipped
+6. Now you chrome extension is reday to be used
 
 ## Usage
-When entering an e-commerce website, click the extension icon and select "Analyze" to get the result.
+When entering an e-commerce website, click the extension icon and select "Analyze" :
+This shows you the number of dark patterns present in the websites and also highlights and explains the type of dark pattern present in the website
 
 
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-
-## Credits
-Thanks to the work of Mathur et al. and Tung et al., we have a full dataset to develop classification models to detect dark patterns as well as their categories.
-Especially, we cannot complete this project without the page segmentation developed by Mathur et al.
-
-## License

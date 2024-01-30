@@ -13,6 +13,7 @@ To install the extension:
 
 ## Usage
 When entering an e-commerce website, click the extension icon and select "Analyze" :
+
 This shows you the number of dark patterns present in the websites and also highlights and explains the type of dark pattern present in the website
 
 

@@ -2,6 +2,7 @@
 
 Dark Pattern Recogonizer assists online users to identify the existence of deceptive dark patterns on shopping websites.
 
+
 ## Installation
 To install the extension:
 
@@ -16,6 +17,7 @@ To install the extension:
 5. Click Load unpacked and navigate to the folder that you unzipped
 
 6. Now you chrome extension is reday to be used
+
 
 ## Usage
 When entering an e-commerce website, click the extension icon and select "Analyze" :

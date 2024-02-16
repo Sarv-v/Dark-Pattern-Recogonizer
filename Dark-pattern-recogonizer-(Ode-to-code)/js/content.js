@@ -226,7 +226,7 @@ async function scrape(script_inner_content, script_url) {
                         const found = class_and_id_list.find(element => script_content.includes(element));
                         if (is_timer && found) {
                             count++;
-                            highlight(elements[i], 'Fake Countdown Timer');
+                            highlight(elements[i], 'Urgency');
                             break;
                         }
                     }
@@ -443,7 +443,7 @@ chrome.runtime.onMessage.addListener(
                                 const found = class_and_id_list.find(element => script_content.includes(element));
                                 if (is_timer && found) {
                                     count++;
-                                    highlight(elements[request.index], 'Fake Countdown Timer');
+                                    highlight(elements[request.index], 'Urgency');
                                     break;
                                 }
                             }
@@ -459,3 +459,94 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
+
+function detectFalseUrgency() {
+    try {
+     
+      const urgencySelectors = ['.urgency', '.countdown', '.limited-time-offer', '.flash-sale', '.deal-of-the-day'];
+      const urgencyKeywords = ['urgent', 'limited', 'last chance', 'hurry', 'expires'];
+  
+     
+      const urgencyElements = document.querySelectorAll(urgencySelectors.join(', '));
+  
+      
+      urgencyElements.forEach(element => {
+        const { display, visibility, opacity, innerText } = window.getComputedStyle(element);
+  
+       
+        if (display !== 'none' && visibility !== 'hidden' && opacity !== '0') {
+        
+          const containsKeyword = urgencyKeywords.some(keyword => innerText.toLowerCase().includes(keyword));
+  
+        
+          const rect = element.getBoundingClientRect();
+          const isNearTop = rect.top < window.innerHeight * 0.2; // Adjust as needed
+          
+         
+          const isPositioned = ['fixed', 'absolute'].includes(element.style.position);
+  
+         
+          const hasCountdown = element.querySelector('.countdown') !== null;
+  
+          
+          const offerDuration = extractOfferDuration(innerText); // Custom function to extract duration
+          const isPlausibleDuration = offerDuration > 0 && offerDuration <= 60; // Adjust as needed
+  
+          
+          if (containsKeyword && (isNearTop || isPositioned || hasCountdown) && isPlausibleDuration) {
+            console.warn('Potential false urgency detected:', element);
+            
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error detecting false urgency:', error);
+    }
+  }
+  
+window.onload = detectFalseUrgency;
+
+
+  function forceAction() {
+    try {
+     
+        alert("You must click OK to proceed.");
+      
+        window.location.href = "https://forcedactionexample.com";
+    } catch (error) {
+        console.error('Error performing forced action:', error);
+    }
+}
+window.onload = forceAction;
+
+function detectPrivacyZuckering() {
+    try {
+        const privacyZuckeringSelectors = ['.privacy-policy-link', '.data-collection-agreement', '.personal-info-request'];
+        const privacyZuckeringKeywords = ['agree', 'consent', 'share', 'personal information', 'data collection'];
+
+        const privacyZuckeringElements = document.querySelectorAll(privacyZuckeringSelectors.join(', '));
+
+        privacyZuckeringElements.forEach(element => {
+            const { display, visibility, opacity, innerText } = window.getComputedStyle(element);
+
+            if (display !== 'none' && visibility !== 'hidden' && opacity !== '0') {
+                const containsKeyword = privacyZuckeringKeywords.some(keyword => innerText.toLowerCase().includes(keyword));
+
+                const rect = element.getBoundingClientRect();
+                const isNearTop = rect.top < window.innerHeight * 0.2;
+
+                const isPositioned = ['fixed', 'absolute'].includes(element.style.position);
+
+                if (containsKeyword && (isNearTop || isPositioned)) {
+                    console.warn('Potential Privacy Zuckering detected:', element);
+                    // Highlight the element with a red bounding box
+                    element.style.border = '2px solid red';
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error detecting Privacy Zuckering:', error);
+    }
+}
+
+window.onload = detectPrivacyZuckering;
